@@ -1,0 +1,1084 @@
+{
+  "regions": [
+    {
+      "sample": "samples/bridge/C2_s1_soft_01.flac",
+      "low": 35,
+      "high": 38,
+      "root": 36,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/C2_s1_soft_02.flac",
+      "low": 35,
+      "high": 38,
+      "root": 36,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/C2_s1_soft_03.flac",
+      "low": 35,
+      "high": 38,
+      "root": 36,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/C2_s1_soft_04.flac",
+      "low": 35,
+      "high": 38,
+      "root": 36,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/C2_s1_01.flac",
+      "low": 35,
+      "high": 38,
+      "root": 36,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/C2_s1_02.flac",
+      "low": 35,
+      "high": 38,
+      "root": 36,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/C2_s1_03.flac",
+      "low": 35,
+      "high": 38,
+      "root": 36,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/C2_s1_04.flac",
+      "low": 35,
+      "high": 38,
+      "root": 36,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/E2_s1_soft_01.flac",
+      "low": 39,
+      "high": 40,
+      "root": 40,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/E2_s1_soft_02.flac",
+      "low": 39,
+      "high": 40,
+      "root": 40,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/E2_s1_soft_03.flac",
+      "low": 39,
+      "high": 40,
+      "root": 40,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/E2_s1_soft_04.flac",
+      "low": 39,
+      "high": 40,
+      "root": 40,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/E2_s1_01.flac",
+      "low": 39,
+      "high": 40,
+      "root": 40,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/E2_s1_02.flac",
+      "low": 39,
+      "high": 40,
+      "root": 40,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/E2_s1_03.flac",
+      "low": 39,
+      "high": 40,
+      "root": 40,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/E2_s1_04.flac",
+      "low": 39,
+      "high": 40,
+      "root": 40,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/F2_s1_soft_01.flac",
+      "low": 41,
+      "high": 42,
+      "root": 41,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/F2_s1_soft_02.flac",
+      "low": 41,
+      "high": 42,
+      "root": 41,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/F2_s1_soft_03.flac",
+      "low": 41,
+      "high": 42,
+      "root": 41,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/F2_s1_soft_04.flac",
+      "low": 41,
+      "high": 42,
+      "root": 41,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/F2_s1_01.flac",
+      "low": 41,
+      "high": 42,
+      "root": 41,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/F2_s1_02.flac",
+      "low": 41,
+      "high": 42,
+      "root": 41,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/F2_s1_03.flac",
+      "low": 41,
+      "high": 42,
+      "root": 41,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/F2_s1_04.flac",
+      "low": 41,
+      "high": 42,
+      "root": 41,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/A2_s2_soft_01.flac",
+      "low": 43,
+      "high": 46,
+      "root": 45,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/A2_s2_soft_02.flac",
+      "low": 43,
+      "high": 46,
+      "root": 45,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/A2_s2_soft_03.flac",
+      "low": 43,
+      "high": 46,
+      "root": 45,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/A2_s2_soft_04.flac",
+      "low": 43,
+      "high": 46,
+      "root": 45,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/A2_s2_01.flac",
+      "low": 43,
+      "high": 46,
+      "root": 45,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/A2_s2_02.flac",
+      "low": 43,
+      "high": 46,
+      "root": 45,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/A2_s2_03.flac",
+      "low": 43,
+      "high": 46,
+      "root": 45,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/A2_s2_04.flac",
+      "low": 43,
+      "high": 46,
+      "root": 45,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/C3_s2_soft_01.flac",
+      "low": 47,
+      "high": 49,
+      "root": 48,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/C3_s2_soft_02.flac",
+      "low": 47,
+      "high": 49,
+      "root": 48,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/C3_s2_soft_03.flac",
+      "low": 47,
+      "high": 49,
+      "root": 48,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/C3_s2_soft_04.flac",
+      "low": 47,
+      "high": 49,
+      "root": 48,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/C3_s2_01.flac",
+      "low": 47,
+      "high": 49,
+      "root": 48,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/C3_s2_02.flac",
+      "low": 47,
+      "high": 49,
+      "root": 48,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/C3_s2_03.flac",
+      "low": 47,
+      "high": 49,
+      "root": 48,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/C3_s2_04.flac",
+      "low": 47,
+      "high": 49,
+      "root": 48,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/D3_s3_soft_01.flac",
+      "low": 50,
+      "high": 51,
+      "root": 50,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/D3_s3_soft_02.flac",
+      "low": 50,
+      "high": 51,
+      "root": 50,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/D3_s3_soft_03.flac",
+      "low": 50,
+      "high": 51,
+      "root": 50,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/D3_s3_soft_04.flac",
+      "low": 50,
+      "high": 51,
+      "root": 50,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/D3_s3_01.flac",
+      "low": 50,
+      "high": 51,
+      "root": 50,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/D3_s3_02.flac",
+      "low": 50,
+      "high": 51,
+      "root": 50,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/D3_s3_03.flac",
+      "low": 50,
+      "high": 51,
+      "root": 50,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/D3_s3_04.flac",
+      "low": 50,
+      "high": 51,
+      "root": 50,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/E3_s3_soft_01.flac",
+      "low": 52,
+      "high": 53,
+      "root": 52,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/E3_s3_soft_02.flac",
+      "low": 52,
+      "high": 53,
+      "root": 52,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/E3_s3_soft_03.flac",
+      "low": 52,
+      "high": 53,
+      "root": 52,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/E3_s3_soft_04.flac",
+      "low": 52,
+      "high": 53,
+      "root": 52,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/E3_s3_01.flac",
+      "low": 52,
+      "high": 53,
+      "root": 52,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/E3_s3_02.flac",
+      "low": 52,
+      "high": 53,
+      "root": 52,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/E3_s3_03.flac",
+      "low": 52,
+      "high": 53,
+      "root": 52,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/E3_s3_04.flac",
+      "low": 52,
+      "high": 53,
+      "root": 52,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/G3_s4_soft_01.flac",
+      "low": 54,
+      "high": 56,
+      "root": 55,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/G3_s4_soft_02.flac",
+      "low": 54,
+      "high": 56,
+      "root": 55,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/G3_s4_soft_03.flac",
+      "low": 54,
+      "high": 56,
+      "root": 55,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/G3_s4_soft_04.flac",
+      "low": 54,
+      "high": 56,
+      "root": 55,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/G3_s4_01.flac",
+      "low": 54,
+      "high": 56,
+      "root": 55,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/G3_s4_02.flac",
+      "low": 54,
+      "high": 56,
+      "root": 55,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/G3_s4_03.flac",
+      "low": 54,
+      "high": 56,
+      "root": 55,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/G3_s4_04.flac",
+      "low": 54,
+      "high": 56,
+      "root": 55,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/B3_s5_soft_01.flac",
+      "low": 57,
+      "high": 59,
+      "root": 59,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/B3_s5_soft_02.flac",
+      "low": 57,
+      "high": 59,
+      "root": 59,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/B3_s5_soft_03.flac",
+      "low": 57,
+      "high": 59,
+      "root": 59,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/B3_s5_soft_04.flac",
+      "low": 57,
+      "high": 59,
+      "root": 59,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/B3_s5_01.flac",
+      "low": 57,
+      "high": 59,
+      "root": 59,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/B3_s5_02.flac",
+      "low": 57,
+      "high": 59,
+      "root": 59,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/B3_s5_03.flac",
+      "low": 57,
+      "high": 59,
+      "root": 59,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/B3_s5_04.flac",
+      "low": 57,
+      "high": 59,
+      "root": 59,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/C#4_s5_soft_01.flac",
+      "low": 60,
+      "high": 62,
+      "root": 61,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/C#4_s5_soft_02.flac",
+      "low": 60,
+      "high": 62,
+      "root": 61,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/C#4_s5_soft_03.flac",
+      "low": 60,
+      "high": 62,
+      "root": 61,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/C#4_s5_soft_04.flac",
+      "low": 60,
+      "high": 62,
+      "root": 61,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/C#4_s5_01.flac",
+      "low": 60,
+      "high": 62,
+      "root": 61,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/C#4_s5_02.flac",
+      "low": 60,
+      "high": 62,
+      "root": 61,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/C#4_s5_03.flac",
+      "low": 60,
+      "high": 62,
+      "root": 61,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/C#4_s5_04.flac",
+      "low": 60,
+      "high": 62,
+      "root": 61,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/E4_s6_soft_01.flac",
+      "low": 63,
+      "high": 65,
+      "root": 64,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/E4_s6_soft_02.flac",
+      "low": 63,
+      "high": 65,
+      "root": 64,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/E4_s6_soft_03.flac",
+      "low": 63,
+      "high": 65,
+      "root": 64,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/E4_s6_soft_04.flac",
+      "low": 63,
+      "high": 65,
+      "root": 64,
+      "lowVelocity": 1,
+      "highVelocity": 92,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/E4_s6_01.flac",
+      "low": 63,
+      "high": 65,
+      "root": 64,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/E4_s6_02.flac",
+      "low": 63,
+      "high": 65,
+      "root": 64,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/E4_s6_03.flac",
+      "low": 63,
+      "high": 65,
+      "root": 64,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/E4_s6_04.flac",
+      "low": 63,
+      "high": 65,
+      "root": 64,
+      "lowVelocity": 93,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/G4_s6_01.flac",
+      "low": 66,
+      "high": 69,
+      "root": 67,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/G4_s6_02.flac",
+      "low": 66,
+      "high": 69,
+      "root": 67,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/G4_s6_03.flac",
+      "low": 66,
+      "high": 69,
+      "root": 67,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/G4_s6_04.flac",
+      "low": 66,
+      "high": 69,
+      "root": 67,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/B4_s6_01.flac",
+      "low": 70,
+      "high": 71,
+      "root": 71,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/B4_s6_02.flac",
+      "low": 70,
+      "high": 71,
+      "root": 71,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/B4_s6_03.flac",
+      "low": 70,
+      "high": 71,
+      "root": 71,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/B4_s6_04.flac",
+      "low": 70,
+      "high": 71,
+      "root": 71,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/C5_s6_01.flac",
+      "low": 72,
+      "high": 72,
+      "root": 72,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/C5_s6_02.flac",
+      "low": 72,
+      "high": 72,
+      "root": 72,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/C5_s6_03.flac",
+      "low": 72,
+      "high": 72,
+      "root": 72,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/C5_s6_04.flac",
+      "low": 72,
+      "high": 72,
+      "root": 72,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/D5_s6_01.flac",
+      "low": 73,
+      "high": 75,
+      "root": 74,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/D5_s6_02.flac",
+      "low": 73,
+      "high": 75,
+      "root": 74,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/D5_s6_03.flac",
+      "low": 73,
+      "high": 75,
+      "root": 74,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/D5_s6_soft_01.flac",
+      "low": 73,
+      "high": 75,
+      "root": 74,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/F5_s6_01.flac",
+      "low": 76,
+      "high": 78,
+      "root": 77,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/F5_s6_02.flac",
+      "low": 76,
+      "high": 78,
+      "root": 77,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/F5_s6_03.flac",
+      "low": 76,
+      "high": 78,
+      "root": 77,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/F5_s6_04.flac",
+      "low": 76,
+      "high": 78,
+      "root": 77,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/G#5_s6_01.flac",
+      "low": 79,
+      "high": 81,
+      "root": 80,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/G#5_s6_02.flac",
+      "low": 79,
+      "high": 81,
+      "root": 80,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/G#5_s6_03.flac",
+      "low": 79,
+      "high": 81,
+      "root": 80,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/G#5_s6_04.flac",
+      "low": 79,
+      "high": 81,
+      "root": 80,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/A#5_s6_01.flac",
+      "low": 82,
+      "high": 83,
+      "root": 82,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/A#5_s6_02.flac",
+      "low": 82,
+      "high": 83,
+      "root": 82,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/A#5_s6_03.flac",
+      "low": 82,
+      "high": 83,
+      "root": 82,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/A#5_s6_04.flac",
+      "low": 82,
+      "high": 83,
+      "root": 82,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/C#6_s6_01.flac",
+      "low": 84,
+      "high": 86,
+      "root": 85,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/C#6_s6_02.flac",
+      "low": 84,
+      "high": 86,
+      "root": 85,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/C#6_s6_03.flac",
+      "low": 84,
+      "high": 86,
+      "root": 85,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    },
+    {
+      "sample": "samples/bridge/C#6_s6_04.flac",
+      "low": 84,
+      "high": 86,
+      "root": 85,
+      "lowVelocity": 1,
+      "highVelocity": 127,
+      "release": 0.2
+    }
+  ]
+}

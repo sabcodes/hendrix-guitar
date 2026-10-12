@@ -104,14 +104,14 @@ Local test helpers in Tests/GuitarChecks.cpp (not production interfaces): writeS
 
 **Interfaces:** Produce GuitarEngine load/prepare/render/reset, PerformanceSettings, and HendrixGuitarAudioProcessor. Initially use fixed settings and JUCE's generic editor. Tone processing is added in Task 3.
 
-- [ ] Add JUCE as a submodule pinned to the commit above.
-- [ ] Define the CMake HendrixGuitar AU target with the metadata above and a HendrixGuitarChecks console target.
-- [ ] Implement Tests/TestMain.cpp using JUCE UnitTestRunner and nonzero exit on failures; register GuitarChecks and SampleImportChecks with CTest.
-- [ ] Write failing import checks: test_checksum_mismatch, test_path_escape, test_inherited_zones, test_missing_sample, and test_unknown_opcode. Use a small synthetic SFZ fixture containing global/group/region inheritance; assert exact root/ranges/velocity/release and four alternatives.
-- [ ] Run `python3 -m unittest discover -s Tests -p SampleImportChecks.py -v`; confirm the importer checks fail before implementation.
-- [ ] Implement `import_bank(archive: pathlib.Path, destination: pathlib.Path) -> dict` in Scripts/import_samples.py. Check the pinned digest before extraction; reject absolute/traversal/symlink archive entries. Use native tar; convert only the observed SFZ opcodes sample, key, lokey, hikey, lovel, hivel, pitch_keycenter, lorand, hirand, ampeg_release. Reject unknown opcodes and unresolved files. Emit inherited regions to mapping.json and record URL, digest, version and license in source.json. Preserve FLAC and license; ignore the downloaded archive.
-- [ ] Download the pinned release with curl --fail --location into an ignored build/cache directory. Import into Resources/Guitar. Audit region coverage 35–86, velocity 1–127, and each referenced decoded sample. Confirm individual committed assets are below GitHub's file limit.
-- [ ] Write failing GuitarChecks: load of missing/corrupt assets fails; after failure a render produces zeros; a synthetic 220 Hz sample at its root produces nonzero finite output after note-on; no MIDI produces silence; sample-offset note-on does not sound early. Assert at the module interface:
+- [x] Add JUCE as a submodule pinned to the commit above.
+- [x] Define the CMake HendrixGuitar AU target with the metadata above and a HendrixGuitarChecks console target.
+- [x] Implement Tests/TestMain.cpp using JUCE UnitTestRunner and nonzero exit on failures; register GuitarChecks and SampleImportChecks with CTest.
+- [x] Write failing import checks: test_checksum_mismatch, test_path_escape, test_inherited_zones, test_missing_sample, and test_unknown_opcode. Use a small synthetic SFZ fixture containing global/group/region inheritance; assert exact root/ranges/velocity/release and four alternatives.
+- [x] Run `python3 -m unittest discover -s Tests -p SampleImportChecks.py -v`; confirm the importer checks fail before implementation.
+- [x] Implement `import_bank(archive: pathlib.Path, destination: pathlib.Path) -> dict` in Scripts/import_samples.py. Check the pinned digest before extraction; reject absolute/traversal/symlink archive entries. Use native tar; convert only the observed SFZ opcodes sample, key, lokey, hikey, lovel, hivel, pitch_keycenter, lorand, hirand, ampeg_release. Reject unknown opcodes and unresolved files. Emit inherited regions to mapping.json and record URL, digest, version and license in source.json. Preserve FLAC and license; ignore the downloaded archive.
+- [x] Download the pinned release with curl --fail --location into an ignored build/cache directory. Import into Resources/Guitar. Audit region coverage 35–86, velocity 1–127, and each referenced decoded sample. Confirm individual committed assets are below GitHub's file limit.
+- [x] Write failing GuitarChecks: load of missing/corrupt assets fails; after failure a render produces zeros; a synthetic 220 Hz sample at its root produces nonzero finite output after note-on; no MIDI produces silence; sample-offset note-on does not sound early. Assert at the module interface:
 ```cpp
 expect(engine.load(missingDirectory).failed());
 engine.render(audio, noMidi, defaults);
@@ -120,9 +120,9 @@ expectEquals(audio.getMagnitude(0, audio.getNumSamples()), 0.0f);
 expectEquals(audio.getMagnitude(0, 32), 0.0f);
 expect(audio.getMagnitude(32, audio.getNumSamples() - 32) > 0.0f);
 ```
-- [ ] Implement load and rendering, using JUCE AudioFormatManager for FLAC decode before the callback, immutable shared region buffers and six preallocated voices. Apply pitch ratio from source root/sample rate, interpolate playback, honor layer mapping and round-robin alternatives, ramp attacks/releases. Clamp MIDI/manifest values; fail the complete load if any referenced asset is invalid.
-- [ ] Implement processor MIDI rendering and stereo output. Resolve the component binary with macOS dladdr on a local function address, then its Contents/Resources/Guitar; never use the Logic executable or source working directory. Copy resources into the AU in CMake. Configure/build with the command below; run CTest and inspect the bundle for resources.
-- [ ] Commit `feat: add playable sampled guitar AU`. Push main, close milestone 2 only after its checks pass, create/push `v0.2.0-playable`.
+- [x] Implement load and rendering, using JUCE AudioFormatManager for FLAC decode before the callback, immutable shared region buffers and six preallocated voices. Apply pitch ratio from source root/sample rate, interpolate playback, honor layer mapping and round-robin alternatives, ramp attacks/releases. Clamp MIDI/manifest values; fail the complete load if any referenced asset is invalid.
+- [x] Implement processor MIDI rendering and stereo output. Resolve the component binary with macOS dladdr on a local function address, then its Contents/Resources/Guitar; never use the Logic executable or source working directory. Copy resources into the AU in CMake. Configure/build with the command below; run CTest and inspect the bundle for resources.
+- [x] Commit `feat: add playable sampled guitar AU`. Push main, close milestone 2 only after its checks pass, create/push `v0.2.0-playable`.
 
 ## Task 2: Add expression and reliable note lifecycle
 
