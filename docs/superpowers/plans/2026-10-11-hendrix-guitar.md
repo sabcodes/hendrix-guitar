@@ -201,9 +201,9 @@ expectWithinAbsoluteError(restored.parameters.getRawParameterValue("wahPosition"
 
 **Interfaces:** Installer consumes the built Hendrix Guitar.component and installs to ~/Library/Audio/Plug-Ins/Components. Preserve an existing installed copy as a backup; do not modify SerumSynth.
 
-- [ ] Run the complete CTest checks and Release build. Verify arm64 binary with file, bundled manifest/sample count and license, and no sample dependency on Desktop/SerumSynth.
-- [ ] Implement a quoted-path installer and usage instructions. Relocate a copy of the bundle to a path containing spaces; confirm the bundle-based resource resolver still returns its Guitar directory.
-- [ ] Install the AU and run `auval -v aumu Hdg1 Hdxg`. Confirm exit zero and validation passed. If AU validation fails, diagnose and fix before release.
+- [x] Run the complete CTest checks and Release build. Verify arm64 binary with file, bundled manifest/sample count and license, and no sample dependency on Desktop/SerumSynth.
+- [x] Implement a quoted-path installer and usage instructions. Relocate a copy of the bundle to a path containing spaces; confirm the bundle-based resource resolver still returns its Guitar directory.
+- [x] Install the AU and run `auval -v aumu Hdg1 Hdxg`. Confirm exit zero and validation passed. If AU validation fails, diagnose and fix before release.
 - [ ] In Logic, create a software instrument track, select Hendrix Guitar, and play via Command-K. Check presets, velocity, bends, modulation, legato, sustain release, double-stops and chords; automate wah/volume; stop playback; save/reopen the project and confirm recall. Use desktop tools for what is available; if Logic requires a human-only step, request that specific step and keep the milestone open until confirmed.
 - [ ] Record actual check results, plugin install path and known limitations in docs/validation.md. Include that global MIDI pitch bend bends all held notes and octave fuzz can be rough on chords; these are musical limits of the first version.
 - [ ] Commit `release: validate Hendrix Guitar in Logic`, push, close milestone 5, push `v1.0.0` and create a private-repo GitHub release containing the AU archive and provenance. Claim completion only with the recorded host/build evidence.
