@@ -38,4 +38,4 @@ Installation goes to ~/Library/Audio/Plug-Ins/Components/Hendrix Guitar.componen
 
 See [validation notes](docs/validation.md), [approved spec](docs/superpowers/specs/2026-10-11-hendrix-guitar-design.md), and [third-party notices](THIRD_PARTY_NOTICES.md). All guitar recordings are CC0 FreePats FSBS direct samples. No Hendrix recordings are included.
 
-Logic listening and project save/reopen checks are pending the owner's preview test. This is a development preview.
+The owner approved the Logic preview and confirmed saved settings survive project reopening. Final build and review evidence is recorded in the validation notes.

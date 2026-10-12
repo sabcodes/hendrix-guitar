@@ -7,6 +7,7 @@ public:
  const juce::String getName() const override { return "Hendrix Guitar"; }
  void prepareToPlay(double,int) override;
  void releaseResources() override;
+ void reset() override;
  void processBlock(juce::AudioBuffer<float>&,juce::MidiBuffer&) override;
  bool isBusesLayoutSupported(const BusesLayout&) const override;
  juce::AudioProcessorEditor* createEditor() override;

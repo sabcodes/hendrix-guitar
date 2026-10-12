@@ -1,4 +1,4 @@
-import importlib.util, pathlib, tempfile, unittest
+import hashlib, importlib.util, pathlib, tempfile, unittest
 spec=importlib.util.spec_from_file_location("import_samples",pathlib.Path(__file__).parents[1]/"Scripts/import_samples.py")
 mod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
 class SampleImportChecks(unittest.TestCase):
@@ -20,6 +20,13 @@ class SampleImportChecks(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             p=pathlib.Path(d); (p/"test.sfz").write_text("<region> key=60 sample=missing.wav")
             with self.assertRaisesRegex(ValueError,"sample"): mod.build_mapping(p)
+    def test_sample_integrity_recorded(self):
+        with tempfile.TemporaryDirectory() as d:
+            p=pathlib.Path(d); data=b"fixture sample bytes"
+            (p/"sample.flac").write_bytes(data); (p/"test.sfz").write_text("<region> key=60 sample=sample.flac")
+            row=mod.build_mapping(p)[0]
+            self.assertEqual(row.get("bytes"),len(data))
+            self.assertEqual(row.get("sha256"),hashlib.sha256(data).hexdigest())
     def test_unknown_opcode(self):
         with self.assertRaisesRegex(ValueError,"opcode"): mod.parse_sfz("<region> key=60 sample=a.wav filter_type=lpf")
 if __name__=="__main__": unittest.main()

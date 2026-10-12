@@ -1,4 +1,5 @@
 #include "GuitarEngine.h"
+#include <CommonCrypto/CommonDigest.h>
 namespace checks {
 juce::File writeSineBank(const juce::File& dir,double sr=48000,double hz=220) {
  dir.createDirectory();
@@ -8,7 +9,12 @@ juce::File writeSineBank(const juce::File& dir,double sr=48000,double hz=220) {
  auto out=dir.getChildFile("sine.wav").createOutputStream();
  std::unique_ptr<juce::AudioFormatWriter> writer(wav.createWriterFor(out.release(),sr,1,16,{},0));
  writer->writeFromAudioSampleBuffer(b,0,b.getNumSamples()); writer.reset();
- dir.getChildFile("mapping.json").replaceWithText(R"({"regions":[{"sample":"sine.wav","low":0,"high":127,"root":57,"lowVelocity":1,"highVelocity":127,"release":0.2}]})");
+ auto mapping=juce::JSON::parse(R"({"regions":[{"sample":"sine.wav","low":0,"high":127,"root":57,"lowVelocity":1,"highVelocity":127,"release":0.2}]})");
+ auto sample=dir.getChildFile("sine.wav");juce::MemoryBlock bytes;sample.loadFileAsData(bytes);
+ unsigned char digest[CC_SHA256_DIGEST_LENGTH];CC_SHA256(bytes.getData(),static_cast<CC_LONG>(bytes.getSize()),digest);
+ auto* entry=mapping["regions"].getArray()->getReference(0).getDynamicObject();
+ entry->setProperty("bytes",sample.getSize());entry->setProperty("sha256",juce::String::toHexString(digest,CC_SHA256_DIGEST_LENGTH).removeCharacters(" "));
+ dir.getChildFile("mapping.json").replaceWithText(juce::JSON::toString(mapping));
  return dir;
 }
 bool finiteAndBounded(const juce::AudioBuffer<float>& b,float limit=1) {

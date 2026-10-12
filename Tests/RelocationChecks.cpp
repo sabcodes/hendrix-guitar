@@ -28,6 +28,10 @@ int main(int argc,char** argv) {
   AudioUnitRenderActionFlags flags=0;check(AudioUnitRender(unit,&flags,&stamp,0,256,reinterpret_cast<AudioBufferList*>(&buffers)),"render");
   for(auto& channel:samples)for(float sample:channel){if(!std::isfinite(sample)||std::abs(sample)>1)return 1;peak=std::fmax(peak,std::abs(sample));}
  }
+ check(AudioUnitReset(unit,kAudioUnitScope_Global,0),"host reset");
+ AudioTimeStamp resetStamp{};resetStamp.mFlags=kAudioTimeStampSampleTimeValid;resetStamp.mSampleTime=64*256;
+ AudioUnitRenderActionFlags resetFlags=0;check(AudioUnitRender(unit,&resetFlags,&resetStamp,0,256,reinterpret_cast<AudioBufferList*>(&buffers)),"render after reset");
+ for(auto& channel:samples)for(float sample:channel)if(sample!=0){std::fprintf(stderr,"Host reset left sound active\n");return 1;}
  check(MusicDeviceMIDIEvent(unit,0x80,57,0,0),"note off");
  check(AudioUnitUninitialize(unit),"uninitialise");check(AudioComponentInstanceDispose(unit),"dispose");
  std::printf("Relocated AU renders bundled guitar; peak %.6f\n",peak);

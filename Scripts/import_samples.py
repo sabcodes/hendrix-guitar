@@ -53,6 +53,8 @@ def build_mapping(directory):
         if not path.is_file() or path.is_symlink() or not path.resolve().is_relative_to(root.resolve()):
             raise ValueError("missing/unsafe sample "+row["sample"])
         if path.stat().st_size>=100*1024*1024: raise ValueError("sample exceeds Git file limit")
+        row["bytes"]=path.stat().st_size
+        with path.open("rb") as stream: row["sha256"]=hashlib.file_digest(stream,"sha256").hexdigest()
     return rows
 def import_bank(archive, destination):
     archive=pathlib.Path(archive); destination=pathlib.Path(destination)

@@ -1,5 +1,16 @@
 #include "GuitarEngine.h"
 #include <algorithm>
+#include <CommonCrypto/CommonDigest.h>
+static juce::String sampleChecksum(const juce::File& file) {
+ juce::FileInputStream input(file);if(!input.openedOk())return {};
+ CC_SHA256_CTX context;CC_SHA256_Init(&context);std::array<unsigned char,32768> buffer;
+ while(!input.isExhausted()) {
+  int count=input.read(buffer.data(),static_cast<int>(buffer.size()));if(count<=0)return {};
+  CC_SHA256_Update(&context,buffer.data(),static_cast<CC_LONG>(count));
+ }
+ unsigned char digest[CC_SHA256_DIGEST_LENGTH];CC_SHA256_Final(digest,&context);
+ return juce::String::toHexString(digest,CC_SHA256_DIGEST_LENGTH).removeCharacters(" ");
+}
 juce::Result GuitarEngine::load(const juce::File& dir) {
  reset(); regions.clear(); alternatives.fill(0);
  auto document=juce::JSON::parse(dir.getChildFile("mapping.json").loadFileAsString());
@@ -27,7 +38,12 @@ juce::Result GuitarEngine::load(const juce::File& dir) {
    return juce::Result::fail("Invalid sample region.");
   r.release=static_cast<float>(item["release"]);
   if(!std::isfinite(r.release)||r.release<=0||r.release>10) return juce::Result::fail("Invalid sample release.");
-  std::unique_ptr<juce::AudioFormatReader> reader(formats.createReaderFor(dir.getChildFile(path)));
+  const auto file=dir.getChildFile(path);const auto size=item["bytes"];const auto hash=item["sha256"].toString();
+  if((!size.isInt()&&!size.isInt64())||static_cast<juce::int64>(size)<=0||static_cast<juce::int64>(size)>=100*1024*1024||
+     !item["sha256"].isString()||hash.length()!=64||!hash.containsOnly("0123456789abcdef")||
+     !file.existsAsFile()||file.getSize()!=static_cast<juce::int64>(size)||sampleChecksum(file)!=hash)
+   return juce::Result::fail("Guitar sample integrity check failed: "+path);
+  std::unique_ptr<juce::AudioFormatReader> reader(formats.createReaderFor(file));
   if(!reader || reader->lengthInSamples<2 || reader->lengthInSamples>10000000 ||
      !std::isfinite(reader->sampleRate) || reader->sampleRate<8000 ||
      reader->numChannels<1 || reader->numChannels>2)

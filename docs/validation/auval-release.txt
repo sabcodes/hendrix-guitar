@@ -1,0 +1,264 @@
+
+    AU Validation Tool
+    Version: 1.10.0 
+    Copyright 2003-2019, Apple Inc. All Rights Reserved.
+    Specify -h (-help) for command options
+
+--------------------------------------------------
+VALIDATING AUDIO UNIT: 'aumu' - 'Hdg1' - 'Hdxg'
+--------------------------------------------------
+Manufacturer String: sabcodes
+AudioUnit Name: Hendrix Guitar
+Component Version: 1.0.0 (0x10000)
+
+* * PASS
+--------------------------------------------------
+TESTING OPEN TIMES:
+COLD:
+Time to open AudioUnit:         1883.572 ms
+WARM:
+Time to open AudioUnit:         1880.167  ms
+This AudioUnit is a version 2 implementation.
+FIRST TIME:
+Time for initialization:        0.008 ms
+
+* * PASS
+--------------------------------------------------
+VERIFYING DEFAULT SCOPE FORMATS:
+Input Scope Bus Configuration:
+ Default Bus Count:0
+
+Output Scope Bus Configuration:
+ Default Bus Count:1
+    Bus Name: Output
+    Default Format: AudioStreamBasicDescription:  2 ch,  44100 Hz, Float32, deinterleaved
+    Has Channel Layouts: 0x650002 0x660002 0x670002 0x6A0002 
+    Default Layout:
+	Tag=0x650002, Num Chan Descs=0
+
+* * PASS
+--------------------------------------------------
+VERIFYING REQUIRED PROPERTIES:
+
+* * PASS
+--------------------------------------------------
+VERIFYING RECOMMENDED PROPERTIES:
+  VERIFYING PROPERTY: Latency
+    PASS
+
+* * PASS
+--------------------------------------------------
+VERIFYING OPTIONAL PROPERTIES:
+  VERIFYING PROPERTY: Tail Time
+    PASS
+  VERIFYING PROPERTY: Bypass Effect
+    PASS
+
+* * PASS
+--------------------------------------------------
+VERIFYING SPECIAL PROPERTIES:
+
+VERIFYING CUSTOM UI
+Cocoa Views Available: 1
+  JUCE_AUCocoaViewClass_4d1e0ce2a281b8f8
+    PASS
+
+HAS FACTORY PRESETS
+    ID:   0    Name: Untitled
+
+VERIFYING CLASS INFO
+    PASS
+
+TESTING HOST CALLBACKS
+    PASS
+
+* * PASS
+--------------------------------------------------
+PUBLISHED PARAMETER INFO:
+
+# # # 17 Global Scope Parameters:
+Parameter ID:3155023
+Name: Fuzz
+Parameter Type: Generic
+Values: Minimum = 0.0000000, Default = 0.3500000, Maximum = 1.0000000
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:115595307
+Name: Glide (ms)
+Parameter Type: Generic
+Values: Minimum = 5.0000000, Default = 70.0000000, Maximum = 250.0000000
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:168371268
+Name: Guitar volume
+Parameter Type: Generic
+Values: Minimum = 0.0000000, Default = 0.8500000, Maximum = 1.0000000
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:538696534
+Name: Cab tone
+Parameter Type: Generic
+Values: Minimum = 0.0000000, Default = 0.5000000, Maximum = 1.0000000
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:627812902
+Name: Amp drive
+Parameter Type: Generic
+Values: Minimum = 0.0000000, Default = 0.4000000, Maximum = 1.0000000
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:676106116
+Name: Bend (semitones)
+Parameter Type: Generic
+Values: Minimum = 1.0000000, Default = 2.0000000, Maximum = 12.0000000
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:796119545
+Name: Vibrato rate (Hz)
+Parameter Type: Generic
+Values: Minimum = 0.5000000, Default = 5.5000000, Maximum = 10.0000000
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:844958247
+Name: Wah position
+Parameter Type: Generic
+Values: Minimum = 0.0000000, Default = 0.5000000, Maximum = 1.0000000
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:1040905678
+Name: Mono legato
+Parameter Type: Boolean
+Values: Minimum = Off, Default = Off, Maximum = On
+Flags: Values Have Strings, High Resolution, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:1044572362
+Name: Vibrato depth (cents)
+Parameter Type: Generic
+Values: Minimum = 0.0000000, Default = 35.0000000, Maximum = 100.0000000
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:1066216034
+Name: Output
+Parameter Type: Generic
+Values: Minimum = 0.0000000, Default = 0.6500000, Maximum = 1.0000000
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:1093267510
+Name: Vibe rate
+Parameter Type: Generic
+Values: Minimum = 0.1000000, Default = 2.5000002, Maximum = 10.0000000
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+WARNING: retrievedValue = 0.242424 (was 0.242424), Parameter did not retain default value when set
+  -parameter PASS
+
+Parameter ID:1125333424
+Name: Octave
+Parameter Type: Generic
+Values: Minimum = 0.0000000, Default = 0.0000000, Maximum = 1.0000000
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:1267651926
+Name: Amp tone
+Parameter Type: Generic
+Values: Minimum = 0.0000000, Default = 0.5500000, Maximum = 1.0000000
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:1666224685
+Name: Vibe depth
+Parameter Type: Generic
+Values: Minimum = 0.0000000, Default = 0.1500000, Maximum = 1.0000000
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:1926496899
+Name: Wah
+Parameter Type: Boolean
+Values: Minimum = Off, Default = Off, Maximum = On
+Flags: Values Have Strings, High Resolution, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:1955982213
+Name: Harmonic sustain
+Parameter Type: Generic
+Values: Minimum = 0.0000000, Default = 0.0000000, Maximum = 1.0000000
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Testing that parameters retain value across reset and initialization
+  PASS
+
+* * PASS
+--------------------------------------------------
+FORMAT TESTS:
+
+Reported Channel Capabilities (explicit):
+      [0, 2]  
+
+No Input, Output Chans:
+0-1   0-2   0-4   0-5   0-6   0-7   0-8
+      X                                   
+
+# # AudioChannelLayouts (4), Output Scope:
+ChannelLayout is Writable: T
+The Unit publishes the following Channel Layouts:
+  0x650002, 0x660002, 0x670002, 0x6A0002, 
+
+Is Audio Channel Layout Available:
+Mono    Stereo  Binau.  AU_4    Ambi.   AU_5    AU_5_0  AU_6    AU_6_0  AU_7_0  AU_7_0F AU_8    AU_5_1  AU_6_1  AU_7_1  AU_7_1F 
+        X       X                                                                                                               
+
+Current Format:AudioStreamBasicDescription:  2 ch,  44100 Hz, Float32, deinterleaved
+Current Format Tag = 0x650002, New Format Tag = 0x650002, Successsful
+
+Current Format:AudioStreamBasicDescription:  2 ch,  44100 Hz, Float32, deinterleaved
+Current Format Tag = 0x650002, New Format Tag = 0x6A0002, Successsful
+
+* * PASS
+--------------------------------------------------
+RENDER TESTS:
+
+Output Format: AudioStreamBasicDescription:  2 ch,  44100 Hz, Float32, deinterleaved
+Render Test at 512 frames
+Slicing Render Test at 64 frames
+  PASS
+
+
+Render Test at 64 frames, sample rate: 22050 Hz
+Render Test at 137 frames, sample rate: 96000 Hz
+Render Test at 4096 frames, sample rate: 48000 Hz
+Render Test at 4096 frames, sample rate: 192000 Hz
+Render Test at 4096 frames, sample rate: 11025 Hz
+Render Test at 512 frames, sample rate: 44100 Hz
+  PASS
+
+Bad Max Frames - Render should fail
+  PASS
+
+Checking parameter setting
+Using AudioUnitSetParameter
+Using AudioUnitScheduleParameter
+  PASS
+
+Checking ramped parameter scheduling
+  PASS
+
+Test MIDI
+  PASS
+
+* * PASS
+--------------------------------------------------
+AU VALIDATION SUCCEEDED.
+--------------------------------------------------

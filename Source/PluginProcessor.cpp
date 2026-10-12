@@ -10,7 +10,8 @@ static juce::File guitarDirectory() {
 HendrixGuitarAudioProcessor::HendrixGuitarAudioProcessor()
 : AudioProcessor(BusesProperties().withOutput("Output",juce::AudioChannelSet::stereo(),true)), parameters(*this,nullptr,"HendrixGuitarState",createParameterLayout()) { loadStatus=engine.load(guitarDirectory()); }
 void HendrixGuitarAudioProcessor::prepareToPlay(double sr,int n) {engine.prepare(sr,n);tone.prepare(sr,n);setLatencySamples(tone.latencySamples());}
-void HendrixGuitarAudioProcessor::releaseResources() {engine.reset();tone.reset();}
+void HendrixGuitarAudioProcessor::reset() {engine.reset();tone.reset();}
+void HendrixGuitarAudioProcessor::releaseResources() {reset();}
 void HendrixGuitarAudioProcessor::processBlock(juce::AudioBuffer<float>& b,juce::MidiBuffer& m) {
  juce::ScopedNoDenormals no;engine.render(b,m,readPerformanceSettings(parameters));
  const auto settings=readToneSettings(parameters);
