@@ -1,0 +1,15 @@
+UI slider -> saved parameter -> rendered audio wiring verified.
+guitarVolume: level delta 9.52505 dB, brightness delta 0.910852 dB, level-matched difference 0.370139
+master: level delta 19.7814 dB, brightness delta 0.0398996 dB, level-matched difference 0.022981
+fuzz: level delta 19.7322 dB, brightness delta 0.581232 dB, level-matched difference 0.24946
+ampDrive: level delta 12.8053 dB, brightness delta 0.264184 dB, level-matched difference 0.131092
+ampTone: level delta 8.02046 dB, brightness delta 13 dB, level-matched difference 1.51246
+cabTone: level delta 7.36387 dB, brightness delta 12.2701 dB, level-matched difference 1.4849
+vibeRate: level delta -0.0591444 dB, brightness delta -0.211441 dB, level-matched difference 0.129284
+vibeDepth: level delta -3.77964 dB, brightness delta -3.73559 dB, level-matched difference 0.897515
+octave: level delta -4.72907 dB, brightness delta -3.76817 dB, level-matched difference 1.44621
+wahPosition-off: level delta 0 dB, brightness delta 0 dB, level-matched difference 0
+wahPosition-on: level delta 3.70625 dB, brightness delta 18.5733 dB, level-matched difference 1.66866
+fuzz-mid: level delta 10.2617 dB, brightness delta 0.379089 dB, level-matched difference 0.165821
+fuzz-full-volume: level delta 11.3447 dB, brightness delta 1.32576 dB, level-matched difference 0.505369
+fuzz-mid-full-volume: level delta 5.26736 dB, brightness delta 0.662668 dB, level-matched difference 0.29748

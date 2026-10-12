@@ -40,4 +40,6 @@ See [validation notes](docs/validation.md), [approved spec](docs/superpowers/spe
 
 The owner approved the Logic preview and confirmed saved settings survive project reopening. Final build and review evidence is recorded in the validation notes.
 
-[Download the private 1.0.0 release](https://github.com/sabcodes/hendrix-guitar/releases/tag/v1.0.0). The ZIP contains the self-contained AU, Install.command, licenses and validation notes.
+[Download the private 1.1.0 release](https://github.com/sabcodes/hendrix-guitar/releases/tag/v1.1.0). The ZIP contains the self-contained AU, Install.command, licenses and validation notes.
+
+Version 1.1 restores guitar-volume/fuzz response, widens amp/cab brightness and increases low-depth vibe response. See [controlled comparisons](docs/control-response.md). Existing saved knob values recall; their tonal voicing changes with this update.

@@ -1,6 +1,9 @@
 #include "VintageTone.h"
 #include <algorithm>
 static float safe(float x,float lo,float hi,float fallback){return std::isfinite(x)?juce::jlimit(lo,hi,x):fallback;}
+static float toneCutoff(float knob,float midpoint,float low,float centre,float high) {
+ return knob<=midpoint?low*std::pow(centre/low,knob/midpoint):centre*std::pow(high/centre,(knob-midpoint)/(1-midpoint));
+}
 void VintageTone::prepare(double sr,int maxBlock) {
  if(!std::isfinite(sr)||sr<8000)sr=48000;
  capacity=std::max(1,maxBlock);rate=sr*4;
@@ -36,9 +39,11 @@ void VintageTone::process(juce::AudioBuffer<float>& b,const ToneSettings& s) {
   auto up=oversampling.processSamplesUp(native);
   for(size_t i=0;i<up.getNumSamples();++i) {
    std::array<float,11> p{};for(size_t k=0;k<p.size();++k)p[k]=controls[k].getNextValue();
+   // Depth controls both sweep and blend; this taper prevents a near-silent squared response.
+   p[6]=std::sqrt(p[6]);
    wah.setCutoffFrequency(300*std::pow(9.0f,p[4]));
-   ampLowpass.setCutoffFrequency(std::min(static_cast<float>(rate*.4),1200+7600*p[8]));
-   cabLowpass.setCutoffFrequency(std::min(static_cast<float>(rate*.4),2500+4500*p[9]));
+   ampLowpass.setCutoffFrequency(std::min(static_cast<float>(rate*.4),toneCutoff(p[8],.55f,600,5380,12000)));
+   cabLowpass.setCutoffFrequency(std::min(static_cast<float>(rate*.4),toneCutoff(p[9],.5f,650,4750,11500)));
    const float centres[]={150,450,1200,2800};std::array<float,4> a{};
    for(size_t k=0;k<4;++k) {
     double hz=centres[k]*(1+.65*p[6]*std::sin(phase+.6*k));
@@ -50,13 +55,13 @@ void VintageTone::process(juce::AudioBuffer<float>& b,const ToneSettings& s) {
     float x=up.getChannelPointer(c)[i]*p[0];
     auto filtered=wah.processSample(static_cast<int>(c),x)*2.2f;x+=p[3]*(filtered-x);
     x=fuzzHighpass.processSample(static_cast<int>(c),x);
-    float bias=.08f*p[2];float fuzz=std::tanh(x*(1+40*p[2])+bias)-std::tanh(bias);x+=p[2]*(fuzz-x);
+    float bias=.08f*p[2];float fuzz=std::tanh(x*(1+12*p[2])+bias)-std::tanh(bias);x+=p[2]*(fuzz-x);
     x=x*(1-p[10])+std::abs(x)*p[10];
     x=octaveHighpass.processSample(static_cast<int>(c),x);
     float wet=x;
     for(size_t k=0;k<4;++k){float y=-a[k]*wet+vibeState[c][k];vibeState[c][k]=wet+a[k]*y;wet=y;}
     x+=.5f*p[6]*(wet-x);
-    x=.7f*std::tanh(x*(2+18*p[7]));
+    x=.7f*std::tanh(x*(1+4*p[7]));
     x=ampLowpass.processSample(static_cast<int>(c),x);
     x=cabHighpass.processSample(static_cast<int>(c),x);
     x=cabLowpass.processSample(static_cast<int>(c),x);

@@ -50,3 +50,11 @@ Source/runtime commit: 07a20ab. Archive: hendrix-guitar-v1.0.0-macos-arm64.zip, 
 The ZIP was extracted into a fresh path with spaces and checked for 1.0.0 bundle metadata, executable installer, license copies, all sample sizes/hashes, strict code signature, native MIDI render and silence after AudioUnitReset. GitHub reports both archive and SHA256SUMS.txt uploaded; the remote archive digest matches the local digest.
 
 The corrected component is installed. Save work and reopen Logic to load the updated binary in existing sessions. The previous preview is archived in Library/Audio/Plug-Ins/HendrixGuitar Backups.
+
+## 1.1.0 control-response correction
+
+The owner then reported weak response from most controls, including Guitar volume/Fuzz. [Diagnosis and controlled before/after measurements](control-response.md) identified early double saturation, narrow tone-filter ranges and weak low-depth vibe scaling. The editor-to-audio path passed an offscreen mute/unmute check.
+
+The revised model reproduces the original failure when the original 1.0 tone source is restored, and passes the same regression with the calibrated model. All six CTest groups pass (20.81 seconds), including full MIDI/state/integrity/reset/packaging coverage. The installed 1.1.0 AU passes Apple validation; [full output](validation/control-response/auval.txt). Saved IDs/schema/MIDI/latency are stable; recalled values produce the revised tone intentionally.
+
+The previous 1.0 instrument is archived by the installer. A fresh review found no blockers; one test-direction safeguard is deferred. The owner has not yet auditioned 1.1.0; signal response measurements are separate from listening preference.

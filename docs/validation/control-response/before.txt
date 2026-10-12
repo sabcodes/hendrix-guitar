@@ -1,0 +1,16 @@
+UI slider -> saved parameter -> rendered audio wiring verified.
+guitarVolume: level delta 1.08469 dB, brightness delta 0.504263 dB, level-matched difference 0.195786
+master: level delta 18.8733 dB, brightness delta 0.0463591 dB, level-matched difference 0.0453574
+fuzz: level delta 14.6577 dB, brightness delta 0.859155 dB, level-matched difference 0.596459
+ampDrive: level delta 8.16698 dB, brightness delta 0.367791 dB, level-matched difference 0.425357
+ampTone: level delta 4.05798 dB, brightness delta 5.79146 dB, level-matched difference 1.28281
+cabTone: level delta 0.709564 dB, brightness delta 0.95358 dB, level-matched difference 0.629422
+vibeRate: level delta 0.000876902 dB, brightness delta 0.0197672 dB, level-matched difference 0.0168006
+vibeDepth: level delta -1.1863 dB, brightness delta -3.73858 dB, level-matched difference 0.928709
+octave: level delta -2.09124 dB, brightness delta -3.13283 dB, level-matched difference 1.43177
+wahPosition-off: level delta 0 dB, brightness delta 0 dB, level-matched difference 0
+wahPosition-on: level delta 0.523134 dB, brightness delta 18.8632 dB, level-matched difference 1.60147
+fuzz-mid: level delta 3.59161 dB, brightness delta 0.21938 dB, level-matched difference 0.319183
+fuzz-full-volume: level delta 3.97004 dB, brightness delta 0.809799 dB, level-matched difference 0.406949
+fuzz-mid-full-volume: level delta 0.414876 dB, brightness delta 0.367227 dB, level-matched difference 0.116333
+WEAK: insufficient guitar-volume/fuzz contrast or less than 6 dB amp/cab brightness range.

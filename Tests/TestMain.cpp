@@ -35,8 +35,10 @@ static int renderReferences(const juce::File& output) {
  }
  return 0;
 }
+int probeControls(const juce::File&);
 int main(int argc,char** argv) {
  juce::ScopedJuceInitialiser_GUI gui;
+ if(argc==3&&juce::String(argv[1])=="--probe-controls")return probeControls(juce::File(argv[2]));
  if(argc==3&&juce::String(argv[1])=="--editor") {
   HendrixGuitarAudioProcessor processor;std::unique_ptr<juce::AudioProcessorEditor> editor(processor.createEditor());
   auto image=editor->createComponentSnapshot(editor->getLocalBounds(),true,2.0f);juce::PNGImageFormat png;

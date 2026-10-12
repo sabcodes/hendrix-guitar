@@ -1,0 +1,17 @@
+Test project /Users/sabarnoislam/Desktop/hendrix guitar/build
+    Start 1: ControlResponseChecks
+1/6 Test #1: ControlResponseChecks ............   Passed    6.03 sec
+    Start 2: RelocationChecks
+2/6 Test #2: RelocationChecks .................   Passed    2.02 sec
+    Start 3: InstallChecks
+3/6 Test #3: InstallChecks ....................   Passed    3.06 sec
+    Start 4: GuitarChecks
+4/6 Test #4: GuitarChecks .....................   Passed    9.35 sec
+    Start 5: BundleChecks
+5/6 Test #5: BundleChecks .....................   Passed    0.26 sec
+    Start 6: SampleImportChecks
+6/6 Test #6: SampleImportChecks ...............   Passed    0.08 sec
+
+100% tests passed, 0 tests failed out of 6
+
+Total Test time (real) =  20.81 sec
