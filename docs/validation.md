@@ -40,3 +40,13 @@ All 120 sample mappings retain identical ranges, root notes, velocity layers and
 - Harmonic sustain is a bounded synthetic blend, not an acoustic feedback simulation.
 - Vintage-inspired coloration, not a circuit-perfect reproduction.
 - Native arm64 AU for Logic on this Mac; no VST or Intel binary.
+
+## Published package
+
+Private GitHub release: [Hendrix Guitar v1.0.0](https://github.com/sabcodes/hendrix-guitar/releases/tag/v1.0.0).
+
+Source/runtime commit: 07a20ab. Archive: hendrix-guitar-v1.0.0-macos-arm64.zip, 80,822,240 bytes. SHA-256: `060a311135db4e77e4b56bc625f0b04795764ca30622550fd769fa575a85e346`.
+
+The ZIP was extracted into a fresh path with spaces and checked for 1.0.0 bundle metadata, executable installer, license copies, all sample sizes/hashes, strict code signature, native MIDI render and silence after AudioUnitReset. GitHub reports both archive and SHA256SUMS.txt uploaded; the remote archive digest matches the local digest.
+
+The corrected component is installed. Save work and reopen Logic to load the updated binary in existing sessions. The previous preview is archived in Library/Audio/Plug-Ins/HendrixGuitar Backups.

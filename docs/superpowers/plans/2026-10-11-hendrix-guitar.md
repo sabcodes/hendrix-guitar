@@ -206,7 +206,7 @@ expectWithinAbsoluteError(restored.parameters.getRawParameterValue("wahPosition"
 - [x] Install the AU and run `auval -v aumu Hdg1 Hdxg`. Confirm exit zero and validation passed. If AU validation fails, diagnose and fix before release.
 - [x] In Logic, create a software instrument track, select Hendrix Guitar, and play via Command-K. Check presets, velocity, bends, modulation, legato, sustain release, double-stops and chords; automate wah/volume; stop playback; save/reopen the project and confirm recall. Use desktop tools for what is available; if Logic requires a human-only step, request that specific step and keep the milestone open until confirmed.
 - [x] Record actual check results, plugin install path and known limitations in docs/validation.md. Include that global MIDI pitch bend bends all held notes and octave fuzz can be rough on chords; these are musical limits of the first version.
-- [ ] Commit `release: validate Hendrix Guitar in Logic`, push, close milestone 5, push `v1.0.0` and create a private-repo GitHub release containing the AU archive and provenance. Claim completion only with the recorded host/build evidence.
+- [x] Commit `release: validate Hendrix Guitar in Logic`, push, close milestone 5, push `v1.0.0` and create a private-repo GitHub release containing the AU archive and provenance. Claim completion only with the recorded host/build evidence.
 
 ## Commands and tracking
 
