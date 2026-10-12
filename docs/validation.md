@@ -58,3 +58,5 @@ The owner then reported weak response from most controls, including Guitar volum
 The revised model reproduces the original failure when the original 1.0 tone source is restored, and passes the same regression with the calibrated model. All six CTest groups pass (20.81 seconds), including full MIDI/state/integrity/reset/packaging coverage. The installed 1.1.0 AU passes Apple validation; [full output](validation/control-response/auval.txt). Saved IDs/schema/MIDI/latency are stable; recalled values produce the revised tone intentionally.
 
 The previous 1.0 instrument is archived by the installer. A fresh review found no blockers; one test-direction safeguard is deferred. The owner has not yet auditioned 1.1.0; signal response measurements are separate from listening preference.
+
+The private [1.1.0 release](https://github.com/sabcodes/hendrix-guitar/releases/tag/v1.1.0) is uploaded with the verified archive and checksum. ZIP extraction to a fresh spaced path passed version 1.1.0 metadata, executable installer, licenses, bank hashes/signature, native MIDI rendering (peak 0.400399) and reset silence. Remote/local archive SHA-256 matches. Milestone 6 is complete.

@@ -41,4 +41,10 @@ These are controlled signal measurements, not a claim of human listening approva
 
 ControlResponseChecks requires at least 6 dB volume/low-volume fuzz level contrast, at least 6 dB amp/cab brightness contrast, a normalized waveform difference of 0.1 for vibe rate and 0.15 for middle-fuzz changes. The complete probe failed against the original 1.0 tone source, then passed against the revised source. The previous installed AU was left intact during experiments.
 
-Existing project knob values continue to recall. Their tone changes intentionally with this recalibration. The full six-group suite passed (20.81 seconds). The installed 1.1.0 component passed Apple auval (exit 0, AU VALIDATION SUCCEEDED). A fresh focused review found no blocking issues; its one deferred test-direction improvement is recorded in [the review report](control-response-review.md). Archive extraction checks follow before publication.
+Existing project knob values continue to recall. Their tone changes intentionally with this recalibration. The full six-group suite passed (20.81 seconds). The installed 1.1.0 component passed Apple auval (exit 0, AU VALIDATION SUCCEEDED). A fresh focused review found no blocking issues; its one deferred test-direction improvement is recorded in [the review report](control-response-review.md). The extracted archive passed version/license/installer/hash/signature/native render/reset checks. The private v1.1.0 release is published and milestone 6 is complete.
+
+## Release
+
+[Private v1.1.0 release](https://github.com/sabcodes/hendrix-guitar/releases/tag/v1.1.0). Runtime source commit: 206d08b. Archive: 80,831,188 bytes; SHA-256 `0653ecca6c5b9830a06e987fcdf938f79db1e20068dc960550d9d4bc13abc7c4`. GitHub's uploaded digest matches the locally extracted/verified package.
+
+The revised AU is installed. Save work and fully quit/reopen Logic to load it. Before/after captures are retained under ignored captures/control-response-before and captures/control-response-after for owner audition; temporary source variants were removed. Detailed listening preference remains the owner's feedback, rather than a claim that automated checks listened to the tone.
