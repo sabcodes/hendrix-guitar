@@ -1,6 +1,6 @@
 # Hendrix Guitar AU Design Spec
 
-**Status:** Written spec approved by the user; implementation plan awaiting review
+**Status:** Written spec approved by the user; implementation plan approved; native execution selected
 **Date:** 2026-10-11
 
 ## Goal

@@ -223,4 +223,4 @@ Milestone 1 (spec and implementation plan) closes only after the human reviews t
 
 ## Execution handoff
 
-The written spec was approved in chat. This plan is awaiting review and execution-method choice. Recommended: native execution in this session, followed by a fresh whole-branch reviewer, because the five tasks share the same engine/processor and their interfaces are tightly connected. Subagent-driven execution is available if the user prefers a fresh implementer/reviewer for every task.
+The written spec was approved in chat. The plan was approved; the user selected native execution in chat. Recommended: native execution in this session, followed by a fresh whole-branch reviewer, because the five tasks share the same engine/processor and their interfaces are tightly connected. Subagent-driven execution is available if the user prefers a fresh implementer/reviewer for every task.
