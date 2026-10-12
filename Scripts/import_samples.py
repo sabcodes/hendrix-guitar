@@ -81,4 +81,3 @@ if __name__=="__main__":
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("archive",type=pathlib.Path); parser.add_argument("destination",type=pathlib.Path)
     args=parser.parse_args(); print(json.dumps(import_bank(args.archive,args.destination),indent=2))
-
