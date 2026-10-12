@@ -1,5 +1,6 @@
 #pragma once
 #include "GuitarEngine.h"
+#include "VintageTone.h"
 class HendrixGuitarAudioProcessor final : public juce::AudioProcessor {
 public:
  HendrixGuitarAudioProcessor();
@@ -23,4 +24,5 @@ public:
  juce::Result loadStatus=juce::Result::ok();
 private:
  GuitarEngine engine;
+ VintageTone tone;
 };

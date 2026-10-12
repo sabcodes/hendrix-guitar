@@ -149,3 +149,58 @@ public:
  }
 };
 static ExpressionChecks expressionChecks;
+#include "VintageTone.h"
+#include "PluginProcessor.h"
+class ToneChecks : public juce::UnitTest {
+public:
+ ToneChecks():UnitTest("Vintage tone","Hendrix"){}
+ void runTest() override {
+  for(double sr:{44100.0,48000.0,96000.0}) {
+   int n=static_cast<int>(sr);
+   auto input=[&](float level=.2f) {
+    juce::AudioBuffer<float> b(2,n);
+    for(int i=0;i<n;++i)for(int c=0;c<2;++c)b.setSample(c,i,level*std::sin(static_cast<float>(juce::MathConstants<double>::twoPi*220*i/sr)));
+    return b;
+   };
+   auto processed=[&](const ToneSettings& s) {VintageTone f;f.prepare(sr,64);auto b=input();f.process(b,s);return checks::tail(b,n/4);};
+   ToneSettings s;VintageTone f;f.prepare(sr,64);
+   beginTest("Silent/reset tone remains silent");
+   juce::AudioBuffer<float> silence(2,128);silence.clear();f.process(silence,s);expectEquals(silence.getMagnitude(0,128),0.0f);
+   auto driven=input();f.process(driven,s);f.reset();silence.clear();f.process(silence,s);expectEquals(silence.getMagnitude(0,128),0.0f);
+   beginTest("Extreme controls and input are bounded");
+   for(int size:{0,1,64,257,1024,4096}) {
+    juce::AudioBuffer<float> b(2,size);for(int c=0;c<2;++c)for(int i=0;i<size;++i)b.setSample(c,i,(i%2?10.0f:-10.0f));
+    s.guitarVolume=10;s.master=10;s.fuzz=10;s.wahEnabled=true;s.wahPosition=10;s.vibeDepth=10;s.vibeRateHz=100;s.ampDrive=10;s.ampTone=10;s.cabTone=10;s.octave=10;
+    f.process(b,s);expect(checks::finiteAndBounded(b));
+   }
+   beginTest("Invalid controls cannot poison the DSP");
+   s=ToneSettings{};s.fuzz=std::numeric_limits<float>::quiet_NaN();auto b=input();b.setSample(0,12,std::numeric_limits<float>::quiet_NaN());
+   f.process(b,s);expect(checks::finiteAndBounded(b));f.reset();
+   beginTest("Guitar volume changes harmonic distortion");
+   s=ToneSettings{};s.guitarVolume=.15f;s.fuzz=.5f;s.ampDrive=.7f;
+   auto low=processed(s);s.guitarVolume=1;auto high=processed(s);
+   expect(checks::powerAt(low,sr,660)/checks::powerAt(low,sr,220)<checks::powerAt(high,sr,660)/checks::powerAt(high,sr,220));
+   beginTest("Octave-up raises second harmonic");
+   s=ToneSettings{};s.fuzz=0;s.vibeDepth=0;s.ampDrive=.2f;s.octave=0;auto off=processed(s);
+   s.octave=1;auto on=processed(s);expect(checks::powerAt(on,sr,440)>checks::powerAt(off,sr,440)*2);
+   beginTest("Wah position changes spectrum");
+   s=ToneSettings{};s.wahEnabled=true;s.wahPosition=0;auto wahA=processed(s);s.wahPosition=1;auto wahB=processed(s);
+   wahA.addFrom(0,0,wahB,0,0,wahA.getNumSamples(),-1);expect(wahA.getRMSLevel(0,0,wahA.getNumSamples())>.005f);
+   beginTest("Vibe depth zero bypasses modulation");
+   s=ToneSettings{};s.vibeDepth=0;auto dry=processed(s),dryAgain=processed(s);
+   dryAgain.addFrom(0,0,dry,0,0,dry.getNumSamples(),-1);expect(dryAgain.getMagnitude(0,0,dryAgain.getNumSamples())<1e-6f);
+   s.vibeDepth=1;auto wet=processed(s);wet.addFrom(0,0,dry,0,0,dry.getNumSamples(),-1);
+   expect(wet.getRMSLevel(0,0,wet.getNumSamples())>.005f);
+   beginTest("Oversampling latency is positive and integer");expect(f.latencySamples()>0);
+  }
+  beginTest("Processor reports tone latency");
+  HendrixGuitarAudioProcessor processor;processor.prepareToPlay(48000,256);
+  VintageTone f;f.prepare(48000,256);expectEquals(processor.getLatencySamples(),f.latencySamples());expect(processor.getLatencySamples()>0);
+  beginTest("Processor sound-off clears effect history at event offset");
+  juce::AudioBuffer<float> b(2,256);juce::MidiBuffer m;
+  m.addEvent(juce::MidiMessage::noteOn(1,60,juce::uint8(100)),0);processor.processBlock(b,m);
+  m.clear();m.addEvent(juce::MidiMessage::controllerEvent(1,120,0),32);processor.processBlock(b,m);
+  expectEquals(b.getMagnitude(0,32,224),0.0f);
+ }
+};
+static ToneChecks toneChecks;

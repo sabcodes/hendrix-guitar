@@ -153,8 +153,8 @@ expect(checks::powerAt(afterSteal, 48000.0, 220.0) <
 
 **Interfaces:** Produce ToneSettings and VintageTone prepare/process/reset/latencySamples. Processor calls the engine, then tone processing and reports its latency to Logic.
 
-- [ ] Write failing cases that exercise the public tone interface: silence stays silent after reset; all settings at extrema remain finite with peaks ≤1; input-volume reduction cleans up gain rather than only reducing final level; enabled wah changes the spectrum; octave-up raises the second harmonic; vibe depth 0 removes modulation.
-- [ ] Add signal assertions to the tone cases. Use identical harmonic input for low/high guitar volume and compare distortion ratios:
+- [x] Write failing cases that exercise the public tone interface: silence stays silent after reset; all settings at extrema remain finite with peaks ≤1; input-volume reduction cleans up gain rather than only reducing final level; enabled wah changes the spectrum; octave-up raises the second harmonic; vibe depth 0 removes modulation.
+- [x] Add signal assertions to the tone cases. Use identical harmonic input for low/high guitar volume and compare distortion ratios:
 ```cpp
 expect(checks::finiteAndBounded(extremeAudio, 1.0f));
 expectEquals(silentAudio.getMagnitude(0, silentAudio.getNumSamples()), 0.0f);
@@ -162,11 +162,11 @@ expect(checks::powerAt(lowDrive, sr, 660.0) / checks::powerAt(lowDrive, sr, 220.
        checks::powerAt(highDrive, sr, 660.0) / checks::powerAt(highDrive, sr, 220.0));
 expect(checks::powerAt(octaveOn, sr, 440.0) > checks::powerAt(octaveOff, sr, 440.0));
 ```
-- [ ] Test block sizes 0, 1, 64, 257 and blocks larger than prepare's capacity by chunking; test 44.1/48/96 kHz and rapid parameter changes. Run GuitarChecks to confirm new checks fail.
-- [ ] Implement the fixed chain with JUCE DSP: pre-effect guitar volume, resonant swept wah, filtered asymmetric fuzz, optional rectified octave-up with DC removal, four-stage modulated all-pass vibe, driven amp EQ/waveshaping and cabinet filter coloration. Use smooth parameters, 4× JUCE oversampling for nonlinear stages, DC filtering and a bounded final output stage. Keep all temporary storage preallocated.
-- [ ] Wire processor reset/release and latency reporting. Check `processor.getLatencySamples() == tone.latencySamples()` after prepare.
-- [ ] Run CTest, build AU, and render reference clean/driven/wah passages to ignored files for listening. Tuning should serve the reference character, with no claim of circuit-perfect hardware.
-- [ ] Commit `feat: add vintage guitar tone chain` and push. Leave milestone 4 open until Task 4 completes.
+- [x] Test block sizes 0, 1, 64, 257 and blocks larger than prepare's capacity by chunking; test 44.1/48/96 kHz and rapid parameter changes. Run GuitarChecks to confirm new checks fail.
+- [x] Implement the fixed chain with JUCE DSP: pre-effect guitar volume, resonant swept wah, filtered asymmetric fuzz, optional rectified octave-up with DC removal, four-stage modulated all-pass vibe, driven amp EQ/waveshaping and cabinet filter coloration. Use smooth parameters, 4× JUCE oversampling for nonlinear stages, DC filtering and a bounded final output stage. Keep all temporary storage preallocated.
+- [x] Wire processor reset/release and latency reporting. Check `processor.getLatencySamples() == tone.latencySamples()` after prepare.
+- [x] Run CTest, build AU, and render reference clean/driven/wah passages to ignored files for listening. Tuning should serve the reference character, with no claim of circuit-perfect hardware.
+- [x] Commit `feat: add vintage guitar tone chain` and push. Leave milestone 4 open until Task 4 completes.
 
 ## Task 4: Add controls, presets and state recall
 
