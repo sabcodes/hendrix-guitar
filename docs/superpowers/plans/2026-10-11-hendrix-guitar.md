@@ -130,9 +130,9 @@ expect(audio.getMagnitude(32, audio.getNumSamples() - 32) > 0.0f);
 
 **Interfaces:** Use PerformanceSettings; keep the engine interface unchanged. Produce working bends, vibrato, glide, sustain/feedback and six-voice polyphony.
 
-- [ ] Write failing checks for six simultaneous notes and a seventh note's predictable voice stealing; repeated same-pitch notes; note-off after sustain release; CC120 immediate silence; CC123 release; legato last-note priority and returning to a held note.
-- [ ] Use a synthetic periodic sample to assert pitch wheel maximum with range 2 changes frequency by `pow(2, 2.0 / 12.0)` within 1%; CC1 zero disables vibrato and full-scale enables it. Assert glide reaches target within its configured 70 ms, without replaying the pick attack.
-- [ ] Add assertions using the synthetic bank and test helpers (audio buffers refer to the just-described event sequences):
+- [x] Write failing checks for six simultaneous notes and a seventh note's predictable voice stealing; repeated same-pitch notes; note-off after sustain release; CC120 immediate silence; CC123 release; legato last-note priority and returning to a held note.
+- [x] Use a synthetic periodic sample to assert pitch wheel maximum with range 2 changes frequency by `pow(2, 2.0 / 12.0)` within 1%; CC1 zero disables vibrato and full-scale enables it. Assert glide reaches target within its configured 70 ms, without replaying the pick attack.
+- [x] Add assertions using the synthetic bank and test helpers (audio buffers refer to the just-described event sequences):
 ```cpp
 expectWithinAbsoluteError(checks::dominantFrequency(bentAudio, 48000.0) / 220.0,
                           std::pow(2.0, 2.0 / 12.0), 0.01);
@@ -142,10 +142,10 @@ expect(checks::powerAt(afterSteal, 48000.0, 220.0) <
        checks::powerAt(afterSteal, 48000.0, 220.0 * std::sqrt(2.0)) * 0.01);
 ```
   Use six notes 57–62 followed by 63 for the steal case; inspect after an 8 ms stealing fade. Inspect the released tail one second after sustain release. Channel 2 sustain/bend must not alter channel 1 notes.
-- [ ] Run GuitarChecks and confirm these new cases fail.
-- [ ] Implement MIDI dispatch at event offsets and held-note bookkeeping by MIDI channel, with smoothed pitch transitions and sample-rate-independent vibrato. Keep note-off/repeated-note handling deterministic. Voice stealing fades the oldest voice to prevent a discontinuity.
-- [ ] Implement bounded harmonic sustain/feedback as specified; assert feedback=1 still decays to silence after released notes, and transport/reset clears sample and harmonic state. Test zero-length buffers and block partitions 1, 64, 257, 1024 with the same event stream.
-- [ ] Run GuitarChecks at 44.1, 48 and 96 kHz; inspect output metrics for finite samples and correct release. Commit `feat: add guitar expression and voice lifecycle`, push, close milestone 3, and push `v0.3.0-expression`.
+- [x] Run GuitarChecks and confirm these new cases fail.
+- [x] Implement MIDI dispatch at event offsets and held-note bookkeeping by MIDI channel, with smoothed pitch transitions and sample-rate-independent vibrato. Keep note-off/repeated-note handling deterministic. Voice stealing fades the oldest voice to prevent a discontinuity.
+- [x] Implement bounded harmonic sustain/feedback as specified; assert feedback=1 still decays to silence after released notes, and transport/reset clears sample and harmonic state. Test zero-length buffers and block partitions 1, 64, 257, 1024 with the same event stream.
+- [x] Run GuitarChecks at 44.1, 48 and 96 kHz; inspect output metrics for finite samples and correct release. Commit `feat: add guitar expression and voice lifecycle`, push, close milestone 3, and push `v0.3.0-expression`.
 
 ## Task 3: Implement the vintage tone chain
 

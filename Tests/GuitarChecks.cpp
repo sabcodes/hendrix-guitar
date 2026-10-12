@@ -49,3 +49,103 @@ public:
  }
 };
 static GuitarChecks guitarChecks;
+namespace checks {
+juce::AudioBuffer<float> render(GuitarEngine& e,const juce::MidiBuffer& m,int n,const PerformanceSettings& s={}) {
+ juce::AudioBuffer<float> b(2,n);e.render(b,m,s);return b;
+}
+juce::AudioBuffer<float> tail(const juce::AudioBuffer<float>& b,int start) {
+ juce::AudioBuffer<float> t(b.getNumChannels(),b.getNumSamples()-start);
+ for(int c=0;c<t.getNumChannels();++c) t.copyFrom(c,0,b,c,start,t.getNumSamples());return t;
+}
+double dominantFrequency(const juce::AudioBuffer<float>& b,double sr) {
+ double first=-1,last=-1;int crossings=0;
+ for(int i=1;i<b.getNumSamples();++i) if(b.getSample(0,i-1)<=0 && b.getSample(0,i)>0) {
+  auto x=i-1-b.getSample(0,i-1)/(b.getSample(0,i)-b.getSample(0,i-1));
+  if(first<0)first=x;last=x;++crossings;
+ }
+ return crossings>1?(crossings-1)*sr/(last-first):0;
+}
+double powerAt(const juce::AudioBuffer<float>& b,double sr,double hz) {
+ double re=0,im=0;
+ for(int i=0;i<b.getNumSamples();++i){auto a=juce::MathConstants<double>::twoPi*hz*i/sr; re+=b.getSample(0,i)*std::cos(a);im+=b.getSample(0,i)*std::sin(a);}
+ return (re*re+im*im)/(b.getNumSamples()*double(b.getNumSamples()));
+}
+}
+class ExpressionChecks : public juce::UnitTest {
+public:
+ ExpressionChecks():UnitTest("Guitar expression","Hendrix"){}
+ void runTest() override {
+  for(double sr:{44100.0,48000.0,96000.0}) {
+   auto dir=juce::File::getSpecialLocation(juce::File::tempDirectory).getChildFile("hendrix-expression-"+juce::Uuid().toString());
+   checks::writeSineBank(dir,sr);GuitarEngine e;expect(e.load(dir).wasOk());e.prepare(sr,256);
+   juce::MidiBuffer m;const int n=static_cast<int>(sr);PerformanceSettings s;
+   auto note=[&](int key=57,int ch=1){m.addEvent(juce::MidiMessage::noteOn(ch,key,juce::uint8(100)),0);};
+   beginTest("Pitch wheel bends by selected range at "+juce::String(sr));
+   note();m.addEvent(juce::MidiMessage::pitchWheel(1,16383),0);
+   auto b=checks::render(e,m,n,s);
+   expectWithinAbsoluteError(checks::dominantFrequency(checks::tail(b,n/4),sr)/220.0,1.122462,0.01);
+   beginTest("Channel expression is isolated");e.reset();m.clear();note();m.addEvent(juce::MidiMessage::pitchWheel(2,16383),0);
+   b=checks::render(e,m,n,s);expectWithinAbsoluteError(checks::dominantFrequency(checks::tail(b,n/4),sr),220.0,1.0);
+   beginTest("Sustain holds note then releases");e.reset();m.clear();note();m.addEvent(juce::MidiMessage::controllerEvent(1,64,127),50);m.addEvent(juce::MidiMessage::noteOff(1,57),100);
+   b=checks::render(e,m,n,s);expect(checks::tail(b,n/2).getMagnitude(0,n/2)>.01f);
+   m.clear();m.addEvent(juce::MidiMessage::controllerEvent(1,64,0),0);b=checks::render(e,m,n,s);expect(b.getMagnitude(0,n/2,n/2)<1e-5f);
+   beginTest("All sound off is immediate");e.reset();m.clear();note();checks::render(e,m,1000,s);
+   m.clear();m.addEvent(juce::MidiMessage::controllerEvent(1,120,0),32);b=checks::render(e,m,256,s);expectEquals(b.getMagnitude(0,32,224),0.0f);
+   beginTest("All notes off releases");e.reset();m.clear();note();checks::render(e,m,1000,s);
+   m.clear();m.addEvent(juce::MidiMessage::controllerEvent(1,123,0),0);b=checks::render(e,m,n,s);expect(b.getMagnitude(0,n/2,n/2)<1e-5f);
+   beginTest("Repeated note-offs release one press at a time");e.reset();m.clear();note();m.addEvent(juce::MidiMessage::noteOn(1,57,juce::uint8(100)),100);m.addEvent(juce::MidiMessage::noteOff(1,57),200);
+   b=checks::render(e,m,n,s);expect(b.getMagnitude(0,n/2,n/2)>.01f);
+   m.clear();m.addEvent(juce::MidiMessage::noteOff(1,57),0);b=checks::render(e,m,n,s);expect(b.getMagnitude(0,n/2,n/2)<1e-5f);
+   beginTest("Zero-duration note cannot stick");e.reset();m.clear();note();m.addEvent(juce::MidiMessage::noteOff(1,57),0);
+   b=checks::render(e,m,n,s);expectEquals(b.getMagnitude(0,n),0.0f);
+   beginTest("Legato glides and returns to held note");e.reset();m.clear();s.legato=true;note();m.addEvent(juce::MidiMessage::noteOn(1,60,juce::uint8(100)),1000);
+   b=checks::render(e,m,n,s);expectWithinAbsoluteError(checks::dominantFrequency(checks::tail(b,n/2),sr),261.6256,1.0);
+   auto legatoTail=checks::tail(b,n/2);expect(checks::powerAt(legatoTail,sr,220)<checks::powerAt(legatoTail,sr,261.6256)*.001);
+   m.clear();m.addEvent(juce::MidiMessage::noteOff(1,60),0);b=checks::render(e,m,n,s);
+   expectWithinAbsoluteError(checks::dominantFrequency(checks::tail(b,n/2),sr),220.0,1.0);
+   beginTest("Modulation activates vibrato");s.legato=false;e.reset();m.clear();note();auto dry=checks::render(e,m,n,s);
+   e.reset();m.clear();note();m.addEvent(juce::MidiMessage::controllerEvent(1,1,127),0);auto wet=checks::render(e,m,n,s);
+   wet.addFrom(0,0,dry,0,0,n,-1);expect(wet.getRMSLevel(0,n/4,n/2)>.01f);
+   beginTest("Feedback extends source then releases");e.reset();m.clear();s.feedback=1;note();b=checks::render(e,m,4*n,s);
+   expect(b.getMagnitude(0,3*n,n)>.0005f);expect(checks::finiteAndBounded(b));
+   m.clear();m.addEvent(juce::MidiMessage::noteOff(1,57),0);b=checks::render(e,m,n,s);expect(b.getMagnitude(0,n/2,n/2)<1e-5f);
+   beginTest("Seventh note steals oldest with a fade");s.feedback=0;e.reset();m.clear();
+   for(int key=57;key<=62;++key)note(key);
+   auto before=checks::render(e,m,1234,s);m.clear();note(63);b=checks::render(e,m,n/2,s);
+   expect(std::abs(b.getSample(0,0)-before.getSample(0,1233))<.05f);
+   auto after=checks::tail(b,static_cast<int>(sr*.02));
+   expect(checks::powerAt(after,sr,220)<checks::powerAt(after,sr,311.127)*.01);
+   beginTest("Block partitioning preserves expression timing");
+   juce::MidiBuffer events;events.addEvent(juce::MidiMessage::noteOn(1,57,juce::uint8(100)),32);events.addEvent(juce::MidiMessage::pitchWheel(1,13000),1000);events.addEvent(juce::MidiMessage::noteOff(1,57),4000);
+   e.reset();auto full=checks::render(e,events,8000,s);
+   for(int block:{1,64,257,1024}) {
+    e.reset();juce::AudioBuffer<float> result(2,8000);
+    for(int pos=0;pos<8000;pos+=block) {
+     auto len=std::min(block,8000-pos);juce::MidiBuffer part;
+     for(const auto item:events)if(item.samplePosition>=pos&&item.samplePosition<pos+len)part.addEvent(item.getMessage(),item.samplePosition-pos);
+     auto chunk=checks::render(e,part,len,s);for(int c=0;c<2;++c)result.copyFrom(c,pos,chunk,c,0,len);
+    }
+    for(int c=0;c<2;++c)result.addFrom(c,0,full,c,0,8000,-1);expect(result.getMagnitude(0,8000)<1e-6f);
+   }
+   beginTest("All sound off removes stolen tails on their original channel");
+   auto stolenScenario=[&](juce::uint8 velocity) {
+    e.reset();juce::MidiBuffer x;x.addEvent(juce::MidiMessage::noteOn(1,57,velocity),0);
+    for(int key=58;key<=62;++key)x.addEvent(juce::MidiMessage::noteOn(2,key,juce::uint8(100)),0);
+    checks::render(e,x,1234,s);x.clear();x.addEvent(juce::MidiMessage::noteOn(2,63,juce::uint8(100)),0);
+    x.addEvent(juce::MidiMessage::controllerEvent(1,120,0),0);return checks::render(e,x,512,s);
+   };
+   auto loudTail=stolenScenario(100),quietTail=stolenScenario(1);
+   loudTail.addFrom(0,0,quietTail,0,0,512,-1);expect(loudTail.getMagnitude(0,0,512)<1e-6f);
+   beginTest("Leaving legato preserves repeated-note ownership");
+   e.reset();s.legato=true;m.clear();note();note();m.addEvent(juce::MidiMessage::noteOn(1,60,juce::uint8(100)),1000);checks::render(e,m,n,s);
+   m.clear();m.addEvent(juce::MidiMessage::noteOff(1,60),0);checks::render(e,m,n/4,s);
+   s.legato=false;m.clear();m.addEvent(juce::MidiMessage::noteOff(1,57),0);b=checks::render(e,m,n/2,s);
+   expect(b.getMagnitude(0,n/4,n/4)>.01f);
+   m.clear();m.addEvent(juce::MidiMessage::noteOff(1,57),0);b=checks::render(e,m,n/2,s);
+   expect(b.getMagnitude(0,n/4,n/4)<1e-5f);
+   juce::AudioBuffer<float> zero(2,0);m.clear();e.render(zero,m,s);
+   dir.deleteRecursively();
+  }
+ }
+};
+static ExpressionChecks expressionChecks;
