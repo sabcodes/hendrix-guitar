@@ -1,6 +1,7 @@
 #include <juce_audio_utils/juce_audio_utils.h>
 #include "GuitarEngine.h"
 #include "VintageTone.h"
+#include "PluginProcessor.h"
 #include <iostream>
 static int renderReferences(const juce::File& output) {
  output.createDirectory();
@@ -36,6 +37,11 @@ static int renderReferences(const juce::File& output) {
 }
 int main(int argc,char** argv) {
  juce::ScopedJuceInitialiser_GUI gui;
+ if(argc==3&&juce::String(argv[1])=="--editor") {
+  HendrixGuitarAudioProcessor processor;std::unique_ptr<juce::AudioProcessorEditor> editor(processor.createEditor());
+  auto image=editor->createComponentSnapshot(editor->getLocalBounds(),true,2.0f);juce::PNGImageFormat png;
+  auto file=juce::File(argv[2]);file.deleteFile();auto output=file.createOutputStream();return output&&png.writeImageToStream(image,*output)?0:1;
+ }
  if(argc==3&&juce::String(argv[1])=="--render")return renderReferences(juce::File(argv[2]));
  juce::UnitTestRunner runner; runner.runTestsInCategory("Hendrix",12345);
  int failures=0; for(int i=0;i<runner.getNumResults();++i) failures+=runner.getResult(i)->failures;

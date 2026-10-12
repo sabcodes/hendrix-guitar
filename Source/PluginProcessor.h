@@ -1,6 +1,6 @@
 #pragma once
 #include "GuitarEngine.h"
-#include "VintageTone.h"
+#include "Parameters.h"
 class HendrixGuitarAudioProcessor final : public juce::AudioProcessor {
 public:
  HendrixGuitarAudioProcessor();
@@ -19,8 +19,9 @@ public:
  void setCurrentProgram(int) override {}
  const juce::String getProgramName(int) override { return {}; }
  void changeProgramName(int,const juce::String&) override {}
- void getStateInformation(juce::MemoryBlock&) override {}
- void setStateInformation(const void*,int) override {}
+ void getStateInformation(juce::MemoryBlock&) override;
+ void setStateInformation(const void*,int) override;
+ juce::AudioProcessorValueTreeState parameters;
  juce::Result loadStatus=juce::Result::ok();
 private:
  GuitarEngine engine;

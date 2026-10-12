@@ -176,8 +176,8 @@ expect(checks::powerAt(octaveOn, sr, 440.0) > checks::powerAt(octaveOff, sr, 440
 
 Parameter IDs: guitarVolume, master, fuzz, wahEnabled, wahPosition, vibeRate, vibeDepth, ampDrive, ampTone, cabTone, octave, feedback, legato, glideMs, bendRange, vibratoRate, vibratoDepth. Use ToneSettings defaults/ranges 0–1 except vibeRate 0.1–10 Hz; PerformanceSettings ranges are specified above, with vibratoRate 0.5–10 Hz and vibratoDepth 0–100 cents. Keep IDs stable.
 
-- [ ] Write failing state tests: round-trip all IDs; changed settings survive processor recreation; malformed XML, wrong root and unsupported version preserve safe current defaults; omitted parameters receive defaults; preset changes during active notes do not lose note-off handling.
-- [ ] Pin state recall through the processor interface:
+- [x] Write failing state tests: round-trip all IDs; changed settings survive processor recreation; malformed XML, wrong root and unsupported version preserve safe current defaults; omitted parameters receive defaults; preset changes during active notes do not lose note-off handling.
+- [x] Pin state recall through the processor interface:
 ```cpp
 original.parameters.getParameter("wahPosition")->setValueNotifyingHost(0.8f);
 original.getStateInformation(state);
@@ -189,11 +189,11 @@ expectWithinAbsoluteError(restored.parameters.getRawParameterValue("wahPosition"
                           0.8f, 1.0e-6f);
 ```
   Parameter IDs from the declared list must all round-trip. A valid partial state uses declared defaults for omitted IDs, while malformed state preserves the current values.
-- [ ] Run GuitarChecks to confirm failures.
-- [ ] Implement APVTS layout, atomic snapshots per block, and state root HendrixGuitarState with schemaVersion=1. Validate the root/version, merge recognized finite values into a fresh default parameter state, then replace state; never deserialize on the audio callback.
-- [ ] Implement three named starting presets: Clean Touch, Driven Lead, Wah Fuzz. Clean Touch: fuzz=0, wah off, octave=0, ampDrive=.2. Driven Lead: fuzz=.65, wah off, octave=0, ampDrive=.65. Wah Fuzz: fuzz=.7, wah on, wahPosition=.6, ampDrive=.6. Keep other values at declared defaults; mouse preset selection uses parameter notifications/gestures.
-- [ ] Build a compact vintage-inspired editor with rotary sliders/toggles attached to APVTS, preset selector, legato/bend/glide controls, load-error display, and help for Command-K, bend 1/2, modulation 3–8, sustain Tab and sampled note range. Provide readable labels, keyboard focus, and useful tooltips; no custom note-input system.
-- [ ] Run CTest and build AU. Commit `feat: add guitar controls presets and saved state`, push, close milestone 4, and push `v0.4.0-tone`.
+- [x] Run GuitarChecks to confirm failures.
+- [x] Implement APVTS layout, atomic snapshots per block, and state root HendrixGuitarState with schemaVersion=1. Validate the root/version, merge recognized finite values into a fresh default parameter state, then replace state; never deserialize on the audio callback.
+- [x] Implement three named starting presets: Clean Touch, Driven Lead, Wah Fuzz. Clean Touch: fuzz=0, wah off, octave=0, ampDrive=.2. Driven Lead: fuzz=.65, wah off, octave=0, ampDrive=.65. Wah Fuzz: fuzz=.7, wah on, wahPosition=.6, ampDrive=.6. Keep other values at declared defaults; mouse preset selection uses parameter notifications/gestures.
+- [x] Build a compact vintage-inspired editor with rotary sliders/toggles attached to APVTS, preset selector, legato/bend/glide controls, load-error display, and help for Command-K, bend 1/2, modulation 3–8, sustain Tab and sampled note range. Provide readable labels, keyboard focus, and useful tooltips; no custom note-input system.
+- [x] Run CTest and build AU. Commit `feat: add guitar controls presets and saved state`, push, close milestone 4, and push `v0.4.0-tone`.
 
 ## Task 5: Install and validate in Logic
 
